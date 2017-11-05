@@ -1,0 +1,21 @@
+{
+    "name": "gabriel/mediapost",
+    "description": "Teste de programação da Mediapost",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Gabriel de Figueiredo Corrêa",
+            "email": "figueiredo.gabriel@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+	"php": "^5.6 || ^7.0"
+    },
+    "autoload": {
+	"psr-4": {
+	    "Application\\": "application"
+	}
+    }
+}
