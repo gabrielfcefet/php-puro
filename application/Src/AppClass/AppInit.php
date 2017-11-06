@@ -68,13 +68,14 @@ class AppInit extends Bootstrap
 	 */
 	protected function initRoutes()
 	{
-		$ar['login'] = array('route'=>'/', 'controller'=>'loginController', 'action'=>'login');
-		$ar['index'] = array('route'=>'/admin', 'controller'=>'indexController', 'action'=>'index');
-		$ar['autenticar'] = array('route'=>'/autenticar', 'controller'=>'acessoController', 'action'=>'autenticar');
-		$ar['logout'] = array('route'=>'/logout', 'controller'=>'acessoController', 'action'=>'logout');
-		$ar['error'] = array('route'=>'/error', 'controller'=>'errorController', 'action'=>'error');
+		$arrRoutes['login'] = array('route'=>'/', 'controller'=>'loginController', 'action'=>'login');
+		$arrRoutes['index'] = array('route'=>'/admin', 'controller'=>'indexController', 'action'=>'index');
+		$arrRoutes['autenticar'] = array('route'=>'/autenticar', 'controller'=>'acessoController', 'action'=>'autenticar');
+		$arrRoutes['logout'] = array('route'=>'/logout', 'controller'=>'acessoController', 'action'=>'logout');
+		$arrRoutes['error'] = array('route'=>'/error', 'controller'=>'errorController', 'action'=>'error');
+		$arrRoutes['formContactRegister'] = array('route'=>'/form/contact/register', 'controller'=>'formController', 'action'=>'contactRegister');
 		
-		$this->setRoutes($ar);
+		$this->setRoutes($arrRoutes);
 	}
 	
 	/**
