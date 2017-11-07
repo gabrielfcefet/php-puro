@@ -20,7 +20,9 @@ class FormController extends Form
         try {
             $baseViewAjax = new BaseViewAjax();
             
-            // CONTINUAR
+            // Campos do formulário
+            $this->setInput('text', 'name', 'name', 'Nome para cadastro', 100, 200, 'Nome');
+            
             
             $baseViewAjax->setDataKey('form', $this->getContentForm());
             
