@@ -4,7 +4,7 @@
 function MascaraSoLetras(){
 	$('.so-letras').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 
 		{translation:{
-			A:{ pattern: /[A-Z a-z áéíóúâêôãõÁÉÍÓÚÂÊÔÃÕ]/, optional: true}
+			A:{ pattern: /[A-Z a-z áéíóúâêôãõçÁÉÍÓÚÂÊÔÃÕÇ]/, optional: true}
 		}
 	});
 }
@@ -62,6 +62,8 @@ function Ajax(url, params){
 	
 	return valor;
 }
+
+
 
 /* Função para validar e-mail */
 function ValidarEmail(email){

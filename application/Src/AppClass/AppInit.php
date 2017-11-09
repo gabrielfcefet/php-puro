@@ -68,12 +68,20 @@ class AppInit extends Bootstrap
 	 */
 	protected function initRoutes()
 	{
+	    // Rotas das páginas
 		$arrRoutes['login'] = array('route'=>'/', 'controller'=>'loginController', 'action'=>'login');
 		$arrRoutes['index'] = array('route'=>'/admin', 'controller'=>'indexController', 'action'=>'index');
+		$arrRoutes['error'] = array('route'=>'/error', 'controller'=>'errorController', 'action'=>'error');
+		
+		// Rotas dos recursos
 		$arrRoutes['autenticar'] = array('route'=>'/autenticar', 'controller'=>'acessoController', 'action'=>'autenticar');
 		$arrRoutes['logout'] = array('route'=>'/logout', 'controller'=>'acessoController', 'action'=>'logout');
-		$arrRoutes['error'] = array('route'=>'/error', 'controller'=>'errorController', 'action'=>'error');
+		
+		// Rotas dos formulários
 		$arrRoutes['formContactRegister'] = array('route'=>'/form/contact/register', 'controller'=>'formController', 'action'=>'contactRegister');
+		$arrRoutes['formContactTelephone'] = array('route'=>'/form/contact/telephone', 'controller'=>'formController', 'action'=>'telephoneForm');
+		$arrRoutes['formContactEmail'] = array('route'=>'/form/contact/email', 'controller'=>'formController', 'action'=>'emailForm');
+		$arrRoutes['formContactSearch'] = array('route'=>'/form/contact/search', 'controller'=>'formController', 'action'=>'contactSearch');
 		
 		$this->setRoutes($arrRoutes);
 	}

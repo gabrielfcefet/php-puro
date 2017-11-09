@@ -18,6 +18,100 @@ abstract class Form
     //
     
     /**
+     * Defino o campo do tipo date
+     * 
+     * @param float $height
+     * @param float $width
+     * @param string $name
+     * @param string $id
+     * @param string $alt
+     * @param string $label
+     * @param string $class
+     * 
+     */
+    protected function setDate(float $height, float $width, string $name, string $id, string $alt, string $label='', string $class='')
+    {
+        // Validação dos itens obrigatórios
+        if (empty($height)) {
+            throw new \Exception("Informe a altura da div do campo data!");
+        }
+        
+        if (empty($width)) {
+            throw new \Exception("Informe a largura do campo data!");
+        }
+        
+        if (empty($id)) {
+            throw new \Exception("Informe o parâmetro id do campo data!");
+        }
+        
+        if (empty($name)) {
+            throw new \Exception("Informe o parâmetro name do campo data!");
+        }
+        
+        if (empty($alt)) {
+            throw new \Exception("Informe o parâmetro alt do campo data!");
+        }
+        
+        // Abre a div
+        $this->openDiv($height);
+        
+        // Verifica se a label foi informada
+        if (! empty($label)) {
+            $this->setLabel($label);
+        }
+        
+        // Define o campo do tipo data
+        $this->htmlForm .= "<input type='date' id='{$id}' name='{$name}'  class='{$class}' alt='{$alt}' style='width:{$width}px;'/>";
+        
+        // Fecha a div
+        $this->closeDiv();
+    }
+    
+    /**
+     * Define o botão
+     * 
+     * @param float $height
+     * @param float $width
+     * @param string $name
+     * @param string $id
+     * @param string $value
+     * @param string $class
+     * 
+     */
+    protected function setButton(float $height, float $width, string $name, string $id, string $value, string $class = '')
+    {
+        // Validação dos itens obrigatórios
+        if (empty($height)) {
+            throw new \Exception("Informe a altura da div do botão!");
+        }
+        
+        if (empty($width)) {
+            throw new \Exception("Informe a largura do botão!");
+        }
+        
+        if (empty($id)) {
+            throw new \Exception("Informe o parâmetro id do botão!");
+        }
+        
+        if (empty($name)) {
+            throw new \Exception("Informe o parâmetro name do botão!");
+        }
+        
+        if (empty($value)) {
+            throw new \Exception("Informe o valor do botão!");
+        }
+        
+        // Abre a div
+        $this->openDiv($height);
+        
+        // Define o botão
+        $this->htmlForm .= "<input type='button' name='{$name}' id='{$id}' class='{$class}' value='{$value}' style='width:{$width}px; margin-top: 23px; display: table;'/>";
+        
+        // Fecha a div
+        $this->closeDiv();
+    }
+    
+    /**
      * Define os campos do tipo textarea
      * 
      * @param float $height
@@ -29,6 +123,13 @@ abstract class Form
     protected function setTextArea(float $height, float $width, string $label='', string $value='')
     {
         // Validação dos itens obrigatórios
+        if (empty($height)) {
+            throw new \Exception("Informe a altura da div da textarea!");
+        }
+        
+        if (empty($width)) {
+            throw new \Exception("Informe a largura da textarea!");
+        }
         
         // Abre a div
         $this->openDiv($height);
@@ -38,6 +139,7 @@ abstract class Form
             $this->setLabel($label);
         }
         
+        // Montando o campo do tipo textarea
         $this->htmlForm .= "<textarea style='width:{$width}px; height:{$height}px;'>{$value}</textarea>";
         
         /// Fecha a div
@@ -175,10 +277,11 @@ abstract class Form
      * @param string $alt            
      * @param float $height            
      * @param float $width            
-     * @param string $label            
+     * @param string $label
+     * @param string $class            
      *
      */
-    protected function setInput(string $type, string $id, string $name, string $alt, float $height, float $width, string $label = '')
+    protected function setInput(string $type, string $id, string $name, string $alt, float $height, float $width, string $label = '', string $class = '')
     {
         // Validação dos itens obrigatórios
         if (empty($type)) {
@@ -214,7 +317,7 @@ abstract class Form
         }
         
         // Define o campo input do formulário
-        $this->htmlForm .= "<input type={$type} id={$id} name={$name} alt={$alt} style='width:{$width}px;'/>";
+        $this->htmlForm .= "<input type={$type} id={$id} name={$name} class='{$class}' alt={$alt} style='width:{$width}px;'/>";
         
         // Fecha a div que armazenará o campo input
         $this->closeDiv();
