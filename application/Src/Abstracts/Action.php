@@ -12,7 +12,6 @@ use Application\Src\AppClass\Session;
  */
 abstract class Action extends TemplateParser
 {
-    private $view;
 	private $action;
 	private $masterPagePath;
 	
@@ -21,7 +20,6 @@ abstract class Action extends TemplateParser
 	 */
 	public function __construct()
 	{
-		$this->view = new \stdClass();
 		$this->masterPagePath = GLOBAL_VARS['MASTER_PAGE'];
 	}
 	

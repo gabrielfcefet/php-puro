@@ -2,14 +2,21 @@ var Index = function () {
 	
 	// Carrega as ações dos elementos
 	var loadActions = function(){
-		$('#btnRegister').click(function(){
-			alert('Cadastrar!');
-			// CONTINUAR
-		});
-		
-		$('#btnClean').click(function(){
-			alert('Limpar!');
-			// CONTINUAR
+		$('#btnRegister, #btnSearch, #btnClean').click(function(){
+			switch (this.id) {
+				case 'btnRegister':{
+					alert('Cadastrar!');
+					break;
+				}
+				case 'btnSearch':{
+					alert('Pesquisar!');
+					break;
+				}	
+				case 'btnClean':{
+					alert('Limpar!');
+					break;
+				}
+			}
 		});
 	}
 	
@@ -19,17 +26,21 @@ var Index = function () {
 			message: '<h1><img src='+ $('#imgAjaxLoader').val() +' /> Carregando...</h1>',
 			onBlock: function() {
 				
-				// Requisita o formulário para cadatro do contato
-				retorno = Ajax('/form/contact/register', '');
-				$('#contentFormCadastro').html(retorno.form);
+				// Requisita o botão de cadatro do contato
+				retornoBtnRegister = Ajax('/forms/contact', 'option=btnRegister');
+				$('#contentFormBtn').html(retornoBtnRegister.form);
+				
+				// Requisita o formulário de pesquisa do contato
+				retornoPesquisa = Ajax('/forms/contact', 'option=searchForm');
+				$('#contentFormPesquisa').html(retornoPesquisa.form);
 				
 				// Requisita o formulário para o cadastro dos telefones
-				retornoTelephone = Ajax('/form/contact/telephone', '');
-				$('#contentFormTelephone').html(retornoTelephone.form);
+				/*retornoTelephone = Ajax('/forms/contact', 'option=');
+				$('#contentFormTelephone').html(retornoTelephone.form);*/
 				
 				// Requisita o formulário para cadastro dos e-mails
-				retornoEmail = Ajax('/form/contact/email', '');
-				$('#contentFormEmail').html(retornoEmail.form);
+				/*retornoEmail = Ajax('/forms/contact', 'option=');
+				$('#contentFormEmail').html(retornoEmail.form);I*/
 				
 				MascaraTelefone();
 				loadActions();

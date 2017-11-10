@@ -78,10 +78,7 @@ class AppInit extends Bootstrap
 		$arrRoutes['logout'] = array('route'=>'/logout', 'controller'=>'acessoController', 'action'=>'logout');
 		
 		// Rotas dos formulários
-		$arrRoutes['formContactRegister'] = array('route'=>'/form/contact/register', 'controller'=>'formController', 'action'=>'contactRegister');
-		$arrRoutes['formContactTelephone'] = array('route'=>'/form/contact/telephone', 'controller'=>'formController', 'action'=>'telephoneForm');
-		$arrRoutes['formContactEmail'] = array('route'=>'/form/contact/email', 'controller'=>'formController', 'action'=>'emailForm');
-		$arrRoutes['formContactSearch'] = array('route'=>'/form/contact/search', 'controller'=>'formController', 'action'=>'contactSearch');
+		$arrRoutes['formsContact'] = array('route'=>'/forms/contact', 'controller'=>'formContatoController', 'action'=>'formsContact');
 		
 		$this->setRoutes($arrRoutes);
 	}

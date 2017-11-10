@@ -4,7 +4,7 @@
     width:100%;
 }
 
-#fdsContato, #fdsTelefone, #fdsEmail{
+#fdsBtnRegister, #fdsFormPesquisa, #fdsGridContato{
 	margin-top: 10px;
 	width:31.33%;
 	margin-right: 1%;
