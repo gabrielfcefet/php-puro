@@ -13,12 +13,11 @@ SELECT * FROM mediapost.telefone;
 -- Busca os contatos com o seus possíveis emails e telefones
 select c.nome,
        e.email,
-       (case e.tipo when 'P' then 'PESSOAL' 
-                    when 'T' then 'TRABALHO' end) as tipo_email,
+       te.tipo_email,
        t.telefone,
-       (case t.tipo when 'C' then 'CELULAR'
-                    when 'R' then 'RESIDENCIAL'
-					when 'T' then 'TRABALHO' end) as tipo_telefone
+       tt.tipo_telefone
   from mediapost.contato c
   left outer join mediapost.email e on (e.contato_id = c.id )
+  left outer join mediapost.tipos_email te on (te.id = e.tipos_email_id)
   left outer join mediapost.telefone t on (t.contato_id = c.id)
+  left outer join mediapost.tipos_telefone tt on (tt.id = t.tipos_telefone_id);

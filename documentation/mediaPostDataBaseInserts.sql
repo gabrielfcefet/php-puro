@@ -15,16 +15,30 @@ insert into mediapost.usuario (nome, senha, status)
 insert into mediapost.contato (nome)
 	               values ('GABRIEL');
 
+-- Inserindo os tipos de e-mails
+insert into mediapost.tipos_email (tipo_email)
+                           values ('Pessoal');
+insert into mediapost.tipos_email (tipo_email)
+                           values ('Trabalho');
+
 -- Inserindo os emails do contato 'GABRIEL'
-insert into mediapost.email (email, tipo, contato_id)
-                     values ('figueiredo.gabriel@gmail.com', 'P', 1);
-insert into mediapost.email (email, tipo, contato_id)
-                     values ('figueiredo.gabriel@outlook.com', 'T', 1);
+insert into mediapost.email (email, contato_id, tipos_email_id)
+                     values ('figueiredo.gabriel@gmail.com', 1, 1);
+insert into mediapost.email (email, contato_id, tipos_email_id)
+                     values ('figueiredo.gabriel@outlook.com', 1, 2);
+
+-- Inserindo os tipos de telefones
+insert into mediapost.tipos_telefone (tipo_telefone)
+                              values ('Celular');
+insert into mediapost.tipos_telefone (tipo_telefone)
+                              values ('Residencial');
+insert into mediapost.tipos_telefone (tipo_telefone)
+                              values ('Trabalho');
 
 -- Inserindo os telefones para do contato 'GABRIEL'
-insert into mediapost.telefone (telefone, tipo, contato_id)
-                        values ('12988052805', 'C', 1);
-insert into mediapost.telefone (telefone, tipo, contato_id)
-                        values ('1239022897', 'R', 1);
+insert into mediapost.telefone (telefone, contato_id, tipos_telefone_id)
+                        values ('12988052805', 1, 1);
+insert into mediapost.telefone (telefone, contato_id, tipos_telefone_id)
+                        values ('1239022897', 1, 2);
 
 commit;
