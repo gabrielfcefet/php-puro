@@ -1,7 +1,7 @@
 <?php
 namespace Application\Src\BusinessRules;
 
-use Application\Models\Usuario;
+use Application\Models\UsuarioModel;
 
 /**
  * Classe das regras de negócio dos Usuários.
@@ -15,10 +15,10 @@ class UsuarioRules
     /**
      * Verifica se as credenciais do usuário foram informadas.
      * 
-     * @param Usuario $usuario            
+     * @param UsuarioModel $usuario            
      * @throws \Exception
      */
-    public function autenticarLogin(Usuario $usuario)
+    public function autenticarLogin(UsuarioModel $usuario)
     {
         if (empty($usuario->getUser())) {
             throw new \Exception("Informe o nome de usuário!");

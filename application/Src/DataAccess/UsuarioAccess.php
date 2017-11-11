@@ -2,21 +2,25 @@
 namespace Application\Src\DataAccess;
 
 use Application\Src\Abstracts\BaseDataAccess;
-use Application\Models\Usuario;
+use Application\Models\UsuarioModel;
 
 /**
- * Classe de acesso ao banco de dados. 
+ * Classe de acesso ao banco de dados.
+ * 
  * @author Gabriel de Figueiredo Corrêa
  * @since 01/10/2017
  */
 class UsuarioAccess extends BaseDataAccess
 {
+
     /**
      * Validação das credenciais do usuário.
-     * @param Usuario $usuario
+     * 
+     * @param UsuarioModel $usuario            
      * @return \Application\Src\Abstracts\string
      */
-    public function autenticar(Usuario $usuario) {
+    public function autenticar(UsuarioModel $usuario)
+    {
         $params = [
             'USER' => $usuario->getUser(),
             'PASSWORD' => $usuario->getPassword()
@@ -28,14 +32,18 @@ class UsuarioAccess extends BaseDataAccess
                                  and senha = :PASSWORD
                                  and status = 1', $params);
     }
-    
+
     /**
      * Busca por um usuárui específico.
-     * @param int $id
+     * 
+     * @param int $id            
      * @return \Application\Src\Abstracts\statement
      */
-    public function buscar(int $id) {
-        $params = ['ID' => $id];
+    public function buscar(int $id)
+    {
+        $params = [
+            'ID' => $id
+        ];
         
         return $this->executeQuery('select id,
                                     	   nome,

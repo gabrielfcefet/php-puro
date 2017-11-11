@@ -7,7 +7,7 @@ namespace Application\Models;
  * @author Gabriel de Figueiredo Corrêa
  * @since 01/10/2017
  */
-class Usuario
+class UsuarioModel
 {
 
     private $id;

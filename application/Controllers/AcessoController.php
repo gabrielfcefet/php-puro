@@ -1,7 +1,7 @@
 <?php
 namespace Application\Controllers;
 
-use Application\Models\Usuario;
+use Application\Models\UsuarioModel;
 use Application\Src\BusinessRules\UsuarioRules;
 use Application\Src\DataAccess\UsuarioAccess;
 use Application\Src\AppClass\BaseViewAjax;
@@ -25,7 +25,7 @@ class AcessoController
     {
         try {
             $baseViewAjax = new BaseViewAjax();
-            $usuario = new Usuario(null, $_POST['username'], $_POST['password']);
+            $usuario = new UsuarioModel(null, $_POST['username'], $_POST['password']);
             
             // Verifica se as credenciais foram informadas.
             $usuarioRules = new UsuarioRules();
@@ -42,7 +42,7 @@ class AcessoController
                 $rows = $result->fetchAll();
                 
                 foreach ($rows as $row) {
-                    $objUsuario = new Usuario($row['id'], $row['nome'], null);
+                    $objUsuario = new UsuarioModel($row['id'], $row['nome'], null);
                 }
                 
                 Session::criar($objUsuario);

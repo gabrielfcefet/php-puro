@@ -9,7 +9,7 @@
 -- Nome: admin
 -- Senha: lalala123 (Criptgrafada com MD5)
 insert into mediapost.usuario (nome, senha, status)
-                       values ('admin', 'f3273f898cb053626f6d94205be66dab2fe9ef7a', 1);
+                       values ('admin', '24500fa6ecaeb8300905727802af3081', 1);
 
 -- Inserindo um contato padrão para testes
 insert into mediapost.contato (nome)

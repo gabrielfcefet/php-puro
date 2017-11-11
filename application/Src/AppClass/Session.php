@@ -1,7 +1,7 @@
 <?php
 namespace Application\Src\AppClass;
 
-use Application\Models\Usuario;
+use Application\Models\UsuarioModel;
 
 /**
  * Classe de gerenciamento de sessão
@@ -15,9 +15,9 @@ class Session
     /**
      * Criar a sessão do usuário.
      * 
-     * @param Usuario $usuario            
+     * @param UsuarioModel $usuario            
      */
-    public static function criar(Usuario $usuario)
+    public static function criar(UsuarioModel $usuario)
     {
         if (session_status() !== PHP_SESSION_ACTIVE) {
             

@@ -10,3 +10,15 @@
 	margin-left: 1%;
 	float: left;
 }
+
+#divBtnSave{
+	position:absolute;
+    bottom:0;
+    margin-left:90%;
+}
+
+#divBtnClean{
+	position:absolute;
+    bottom:0;
+    margin-left:2%;
+}
