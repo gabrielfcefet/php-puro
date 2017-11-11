@@ -53,7 +53,7 @@ abstract class ActionPopUp extends TemplateParser
                 $this->parser($keyAssets, $valueAssets);
             }
 
-            echo $this->getMasterPageContent();
+            return $this->getMasterPageContent();
         }
     }
 
@@ -63,8 +63,8 @@ abstract class ActionPopUp extends TemplateParser
     protected function content()
     {
         $atualClass = get_class($this);
-        $singleClassName = str_replace('controller', '', strtolower(str_replace("Application\\Controllers\\", "", $atualClass)));
-        $filePath = 'application/Views/' . $singleClassName . DIRECTORY_SEPARATOR . $this->action . '.phtml';
+        $singleClassName = str_replace('popupcontroller', '', strtolower(str_replace("Application\\Controllers\\", "", $atualClass)));
+        $filePath = 'application/Views/popup/' . $singleClassName . DIRECTORY_SEPARATOR . $this->action . '.phtml';
 
         $this->setCoreContent($filePath);
         return $this->getCoreContent();

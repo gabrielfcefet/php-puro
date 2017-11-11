@@ -30,14 +30,14 @@ class FormContatoController extends Form
                 }
                 case 'contactForm':{ 
                     // Campos do formulário
-                    $this->setInput('text', 'name', 'name', 'Nome para cadastro', 50, 300, 'Nome');
+                    $this->setInput('text', 'name', 'name', 'Nome para cadastro', 50, 230, 'Nome');
                     $this->setButton(50, 100, 'btnRegister', 'btnRegister', 'Cadastrar');
                     $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar'); 
                     break;
                 }
                 case 'telephoneForm':{ 
                     // Campos do formulário
-                    $this->setInput('text', 'telephoneNumber', 'telephoneNumber', 'Número de telefone', 50, 200, 'Telefone', 'telefone');
+                    $this->setInput('text', 'telephoneNumber', 'telephoneNumber', 'Número de telefone', 50, 110, 'Telefone', 'telefone');
                     $this->setButton(50, 35, 'btnAddTelephone', 'btnAddTelephone', '+');
                     $this->setButton(50, 35, 'btnDelTelephone', 'btnDelTelephone', '-');
                     break;

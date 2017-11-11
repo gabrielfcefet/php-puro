@@ -80,6 +80,9 @@ class AppInit extends Bootstrap
 		// Rotas dos formulários
 		$arrRoutes['formsContact'] = array('route'=>'/forms/contact', 'controller'=>'formContatoController', 'action'=>'formsContact');
 		
+		// Rotas dos PopUps
+		$arrRoutes['popUpContact'] = array('route'=>'/popups/contact/register', 'controller'=>'contactPopUpController', 'action'=>'contactRegister');
+		
 		$this->setRoutes($arrRoutes);
 	}
 	
