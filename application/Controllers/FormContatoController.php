@@ -24,15 +24,18 @@ class FormContatoController extends Form
             $baseViewAjax = new BaseViewAjax();
             
             switch ($form) {
-                case 'btnRegister':{ 
+                case 'btnRegister':{
+                    // Botão do formulário
                     $this->setButton(50, 100, 'btnRegister', 'btnRegister', 'Cadastrar'); 
                     break;
                 }
                 case 'btnSave':{
+                    // Botão do formulário
                     $this->setButton(50, 100, 'btnSave', 'btnSave', 'Salvar');
                     break;
                 }
                 case 'btnClean':{
+                    // Botão do formulário
                     $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar');
                     break;
                 }
