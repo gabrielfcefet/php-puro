@@ -46,16 +46,16 @@ class FormContatoController extends Form
                 }
                 case 'telephoneForm':{ 
                     // Campos do formulário
-                    $this->setInput('text', 'telephoneNumber', 'telephoneNumber', 'Número de telefone', 50, 110, 'Telefone', 'telefone');
-                    $this->setButton(50, 35, 'btnAddTelephone', 'btnAddTelephone', '+');
-                    $this->setButton(50, 35, 'btnDelTelephone', 'btnDelTelephone', '-');
+                    $this->setInput('text', 'telephoneNumber', 'telephoneNumber[]', 'Número de telefone', 50, 110, 'Telefone', 'telefone telephoneNumber');
+                    $this->setButton(50, 35, 'btnAddTelephone', 'btnAddTelephone', '+', 'btnAddTelephone');
+                    $this->setButton(50, 35, 'btnDelTelephone', 'btnDelTelephone', '-', 'btnDelTelephone');
                     break;
                 }
                 case 'emailForm':{ 
                     // Campos do formulário
-                    $this->setInput('email', 'dscEmail', 'dscEmail', 'Email', 50, 200, 'Email');
-                    $this->setButton(50, 35, 'btnAddEmail', 'btnAddEmail', '+');
-                    $this->setButton(50, 35, 'btnDelEmail', 'btnDelEmail', '-');
+                    $this->setInput('email', 'dscEmail', 'dscEmail[]', 'Email', 50, 200, 'Email');
+                    $this->setButton(50, 35, 'btnAddEmail', 'btnAddEmail', '+', 'btnAddEmail');
+                    $this->setButton(50, 35, 'btnDelEmail', 'btnDelEmail', '-', 'btnDelEmail');
                     break;
                 }
                 case 'searchForm':{ 

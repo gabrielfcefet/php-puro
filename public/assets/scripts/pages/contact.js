@@ -1,5 +1,26 @@
 var Contact = function () {
 	
+	// Adiciona um campo de telefone
+	var addTelephone = function(){
+		if ($('div.contentFormTelephone').length <= 3) {
+			telephoneClone = $('div.contentFormTelephone:first').clone();
+			telephoneClone.find('input[type=text]').val('');
+			telephoneClone.insertAfter('div.contentFormTelephone:last');
+			loadActions();
+			delTelephone();
+		}
+	}
+	
+	// Remove o campo de telefone
+	var delTelephone = function(){
+		$('.btnDelTelephone').unbind('click');
+		$('.btnDelTelephone').bind('click', function(){
+			if ($('div.contentFormTelephone').length > 1) {
+				$(this).parent().remove();
+			}
+		});
+	}
+	
 	// Carrega as ações dos elementos
 	var loadActions = function(){
 		$('#btnSave, #btnClean, #btnAddTelephone, #btnDelTelephone, #btnAddEmail, #btnDelEmail').click(function(){
@@ -13,11 +34,11 @@ var Contact = function () {
 					break;
 				}
 				case 'btnAddTelephone':{
-					alert('Add Telefone!');
+					addTelephone();
 					break;
 				}
 				case 'btnDelTelephone':{
-					alert('Del Telefone!');
+					delTelephone();
 					break;
 				}
 				case 'btnAddEmail':{
