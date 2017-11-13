@@ -2,13 +2,15 @@ var Contact = function () {
 	
 	// Adiciona um campo de telefone
 	var addTelephone = function(){
-		if ($('div.contentFormTelephone').length <= 3) {
-			telephoneClone = $('div.contentFormTelephone:first').clone();
-			telephoneClone.find('input[type=text]').val('');
-			telephoneClone.insertAfter('div.contentFormTelephone:last');
-			loadActions();
-			delTelephone();
-		}
+		$('.btnAddTelephone').unbind('click');
+		$('.btnAddTelephone').bind('click', function(){
+			if ($('div.contentFormTelephone').length <= 3) {
+				telephoneClone = $('#fdsTelefone .contentFormTelephone').first().clone(true);
+				telephoneClone.find('input[type=text]').val('');
+				telephoneClone.appendTo('#fdsTelefone').last();
+				MascaraTelefone();
+			}
+		});
 	}
 	
 	// Remove o campo de telefone
@@ -16,25 +18,70 @@ var Contact = function () {
 		$('.btnDelTelephone').unbind('click');
 		$('.btnDelTelephone').bind('click', function(){
 			if ($('div.contentFormTelephone').length > 1) {
-				$(this).parent().remove();
+				$(this).parent().parent().remove();
+				loadActions();
 			}
 		});
 	}
 	
+	// Adiciona um campo de email
+	var addEmail = function(){
+		$('.btnAddEmail').unbind('click');
+		$('.btnAddEmail').bind('click', function(){
+			if ($('div.contentFormEmail').length <= 3) {
+				emailClone = $('#fdsEmail .contentFormEmail').first().clone(true);
+				emailClone.find('input[type=email]').val('');
+				emailClone.appendTo('#fdsEmail').last();
+			}
+		});
+	}
+	
+	// Remove o campo de email
+	var delEmail = function(){
+		$('.btnDelEmail').unbind('click');
+		$('.btnDelEmail').bind('click', function(){
+			if ($('div.contentFormEmail').length > 1) {
+				$(this).parent().parent().remove();
+				loadActions();
+			}
+		});
+	}
+	
+	// Limpa o formulário de telefones
+	var cleanTelephones = function(){
+		while ($('div.contentFormTelephone').length > 1) {
+			$('.btnDelTelephone').click();
+		}
+		
+		$('#telephoneNumber').val('');
+	}
+	
+	// Limpa o formulário de emails
+	var cleanEmails = function(){
+		while ($('div.contentFormEmail').length > 1) {
+			$('.btnDelEmail').click();
+		}
+		
+		$('#dscEmail').val('');
+	}
+	
 	// Carrega as ações dos elementos
 	var loadActions = function(){
-		$('#btnSave, #btnClean, #btnAddTelephone, #btnDelTelephone, #btnAddEmail, #btnDelEmail').click(function(){
+ 		$('#btnSave, #btnClean, #btnAddTelephone, #btnDelTelephone, #btnAddEmail, #btnDelEmail').click(function(){
 			switch (this.id) {
 				case 'btnSave':{
 					alert('Salvar!');
 					break;
 				}
 				case 'btnClean':{
-					alert('Limpar!');
+					cleanTelephones();
+					cleanEmails();
+					$('#name').val('').focus();
 					break;
 				}
 				case 'btnAddTelephone':{
 					addTelephone();
+					delTelephone();
 					break;
 				}
 				case 'btnDelTelephone':{
@@ -42,11 +89,12 @@ var Contact = function () {
 					break;
 				}
 				case 'btnAddEmail':{
-					alert('Add Email!');
+					addEmail();
+					delEmail();
 					break;
 				}
 				case 'btnDelEmail':{
-					alert('Del Email!');
+					delEmail();
 					break;
 				}
 			}
@@ -65,11 +113,11 @@ var Contact = function () {
 				
 				// Requisita o formulário para o cadastro dos telefones
 				retornoTelephone = Ajax('/forms/contact', 'option=telephoneForm');
-				$('#contentFormTelephone').html(retornoTelephone.form);
+				$('.contentFormTelephone').html(retornoTelephone.form);
 				
 				// Requisita o formulário para cadastro dos e-mails
 				retornoEmail = Ajax('/forms/contact', 'option=emailForm');
-				$('#contentFormEmail').html(retornoEmail.form);
+				$('.contentFormEmail').html(retornoEmail.form);
 				
 				// Requisita o formulário para cadastro dos e-mails
 				retornoBtnSave = Ajax('/forms/contact', 'option=btnSave');
@@ -80,6 +128,8 @@ var Contact = function () {
 				$('#divBtnClean').html(retornoBtnClean.form);
 				
 				MascaraTelefone();
+				addTelephone();
+				addEmail();
 				loadActions();
 			}
 		});

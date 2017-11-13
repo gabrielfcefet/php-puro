@@ -26,36 +26,38 @@ class FormContatoController extends Form
             switch ($form) {
                 case 'btnRegister':{
                     // Botão do formulário
-                    $this->setButton(50, 100, 'btnRegister', 'btnRegister', 'Cadastrar'); 
+                    $this->setButton(50, 100, 'btnRegister', 'btnRegister', 'Cadastrar', 'btnRegister'); 
                     break;
                 }
                 case 'btnSave':{
                     // Botão do formulário
-                    $this->setButton(50, 100, 'btnSave', 'btnSave', 'Salvar');
+                    $this->setButton(50, 100, 'btnSave', 'btnSave', 'Salvar', 'btnSave');
                     break;
                 }
                 case 'btnClean':{
                     // Botão do formulário
-                    $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar');
+                    $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar', 'btnClean');
                     break;
                 }
                 case 'contactForm':{ 
                     // Campos do formulário
-                    $this->setInput('text', 'name', 'name', 'Nome para cadastro', 50, 300, 'Nome');
+                    $this->setInput('text', 'name', 'name', 'Nome para cadastro', 50, 220, 'Nome', 'name');
                     break;
                 }
                 case 'telephoneForm':{ 
                     // Campos do formulário
                     $this->setInput('text', 'telephoneNumber', 'telephoneNumber[]', 'Número de telefone', 50, 110, 'Telefone', 'telefone telephoneNumber');
-                    $this->setButton(50, 35, 'btnAddTelephone', 'btnAddTelephone', '+', 'btnAddTelephone');
-                    $this->setButton(50, 35, 'btnDelTelephone', 'btnDelTelephone', '-', 'btnDelTelephone');
+                    $this->setSelect(['Selecione'], 'telephoneType', 'telephoneType[]', 50, 109, 'Tipo de telefone');
+                    $this->setButton(50, 35, 'btnAddTelephone', 'btnAddTelephone', '+', 'btnAddTelephone btn btn-success');
+                    $this->setButton(50, 35, 'btnDelTelephone', 'btnDelTelephone', '-', 'btnDelTelephone btn btn-danger');
                     break;
                 }
                 case 'emailForm':{ 
                     // Campos do formulário
-                    $this->setInput('email', 'dscEmail', 'dscEmail[]', 'Email', 50, 200, 'Email');
-                    $this->setButton(50, 35, 'btnAddEmail', 'btnAddEmail', '+', 'btnAddEmail');
-                    $this->setButton(50, 35, 'btnDelEmail', 'btnDelEmail', '-', 'btnDelEmail');
+                    $this->setInput('email', 'dscEmail', 'dscEmail[]', 'Email', 50, 180, 'Email');
+                    $this->setSelect(['Selecione'], 'emailType', 'emailType[]', 50, 109, 'Tipo de email');
+                    $this->setButton(50, 35, 'btnAddEmail', 'btnAddEmail', '+', 'btnAddEmail btn btn-success');
+                    $this->setButton(50, 35, 'btnDelEmail', 'btnDelEmail', '-', 'btnDelEmail btn btn-danger');
                     break;
                 }
                 case 'searchForm':{ 
@@ -64,8 +66,8 @@ class FormContatoController extends Form
                     $this->setInput('text', 'name', 'name', 'Nome para cadastro', 50, 300, 'Nome');
                     $this->setInput('text', 'telephoneNumber', 'telephoneNumber', 'Número de telefone', 50, 300, 'Telefone', 'telefone');
                     $this->setInput('email', 'dscEmail', 'dscEmail', 'Email', 50, 300, 'Email');
-                    $this->setButton(50, 100, 'btnSearch', 'btnSearch', 'Pesquisar');
-                    $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar');
+                    $this->setButton(50, 100, 'btnSearch', 'btnSearch', 'Pesquisar', 'btnSearch');
+                    $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar', 'btnClean');
                     break;
                 }
             }

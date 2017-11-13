@@ -5,7 +5,7 @@ var Index = function () {
 		$('#btnRegister, #btnSearch, #btnClean').click(function(){
 			switch (this.id) {
 				case 'btnRegister':{
-					popUp('/popups/contact/register', 1024, 400, 'Cadastro de contato', 'popUp');
+					popUp('/popups/contact/register', 1088, 400, 'Cadastro de contato', 'popUp');
 					break;
 				}
 				case 'btnSearch':{
