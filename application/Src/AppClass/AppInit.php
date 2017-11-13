@@ -76,6 +76,7 @@ class AppInit extends Bootstrap
 		// Rotas dos recursos
 		$arrRoutes['autenticar'] = array('route'=>'/autenticar', 'controller'=>'acessoController', 'action'=>'autenticar');
 		$arrRoutes['logout'] = array('route'=>'/logout', 'controller'=>'acessoController', 'action'=>'logout');
+		$arrRoutes['contactInsert'] = array('route'=>'/contact/insert', 'controller'=>'contactController', 'action'=>'insert');
 		
 		// Rotas dos formulários
 		$arrRoutes['formsContact'] = array('route'=>'/forms/contact', 'controller'=>'formContatoController', 'action'=>'formsContact');

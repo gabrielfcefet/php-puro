@@ -257,8 +257,10 @@ abstract class Form
         $this->htmlForm .= "<select id={$id} name={$name} style='width:{$width}px;'>";
         
         // Insere as opções do select
-        foreach ($options as $key => $value) {
-            $this->htmlForm .= "<option value={$key}>{$value}</option>";
+        if (count($options) > 0) {
+            foreach ($options as $key => $value) {
+                $this->htmlForm .= "<option value={$key}>{$value}</option>";
+            }
         }
         
         // Finaliza o select

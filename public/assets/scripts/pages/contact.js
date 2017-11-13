@@ -54,6 +54,7 @@ var Contact = function () {
 		}
 		
 		$('#telephoneNumber').val('');
+		$('#telephoneType').val(0);
 	}
 	
 	// Limpa o formulário de emails
@@ -63,6 +64,50 @@ var Contact = function () {
 		}
 		
 		$('#dscEmail').val('');
+		$('#emailType').val(0);
+	}
+	
+	// Valida os dados do formulário
+	var formValidate = function(){
+		
+		if($('#name').val() == ''){
+			alert('Informe o nome do contato!');
+			$('#name').focus();
+			return false;
+		}else {
+			$('input[type=email]').each(function(index){
+				
+				if($(this).val() != ''){
+					if(ValidarEmail($(this).val()) == false){
+						alert('O email ' + $(this).val() + ' é inválido!');
+						$(this).focus();
+						return false;
+					}
+				}
+			});
+			
+		}
+		
+		return true;
+	}
+	
+	/* Envia as informações do contato 
+	   para salvar na base de dados*/
+	var saveContact = function(){
+		if(formValidate()){
+			
+			$.blockUI({ 
+				message: '<h1><img src='+ $('#imgAjaxLoader').val() +' /> Salvando...</h1>',
+				onBlock: function() {
+					// Requisita o botão de cadatro do contato
+					retorno = Ajax('/contact/insert', $('#formulario').serialize());
+					
+					if (retorno.SUCESSO) {
+						alert('Contato salvo com sucesso!');
+					}
+				}
+			});
+		}
 	}
 	
 	// Carrega as ações dos elementos
@@ -70,7 +115,7 @@ var Contact = function () {
  		$('#btnSave, #btnClean, #btnAddTelephone, #btnDelTelephone, #btnAddEmail, #btnDelEmail').click(function(){
 			switch (this.id) {
 				case 'btnSave':{
-					alert('Salvar!');
+					saveContact();
 					break;
 				}
 				case 'btnClean':{

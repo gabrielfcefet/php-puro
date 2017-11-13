@@ -122,7 +122,7 @@ abstract class BaseDataAccess
     /**
      * Inicia a transação
      */
-    public function startTransaction()
+    public static function startTransaction()
     {
         $base = new BaseDataAccess();
         $base->createConnection();
@@ -134,7 +134,7 @@ abstract class BaseDataAccess
     /**
      * Conclui a transação
      */
-    public function commitTransaction()
+    public static function commitTransaction()
     {
         self::$dbTransaction->commit();
         self::$dbTransaction = null;
@@ -144,7 +144,7 @@ abstract class BaseDataAccess
     /**
      * Desfaz a transação
      */
-    public function rollbackTransaction()
+    public static function rollbackTransaction()
     {
         self::$dbTransaction->rollBack();
         self::$dbTransaction = null;
@@ -166,7 +166,7 @@ abstract class BaseDataAccess
      * 
      * @return integer
      */
-    public function getLastInsertId()
+    public static function getLastInsertId()
     {
         if (self::$trans) {
             $this->dbh = self::$dbTransaction;

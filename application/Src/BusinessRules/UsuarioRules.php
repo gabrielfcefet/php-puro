@@ -14,7 +14,7 @@ class UsuarioRules
 
     /**
      * Verifica se as credenciais do usuário foram informadas.
-     * 
+     *
      * @param UsuarioModel $usuario            
      * @throws \Exception
      */

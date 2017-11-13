@@ -3,6 +3,8 @@ namespace Application\Controllers;
 
 use Application\Src\Abstracts\Form;
 use Application\Src\AppClass\BaseViewAjax;
+use Application\Src\DataAccess\TiposTelefoneAccess;
+use Application\Src\DataAccess\TiposEmailAccess;
 
 /**
  * Controller Form
@@ -26,17 +28,17 @@ class FormContatoController extends Form
             switch ($form) {
                 case 'btnRegister':{
                     // Botão do formulário
-                    $this->setButton(50, 100, 'btnRegister', 'btnRegister', 'Cadastrar', 'btnRegister'); 
+                    $this->setButton(50, 100, 'btnRegister', 'btnRegister', 'Cadastrar', 'btnRegister btn btn-primary'); 
                     break;
                 }
                 case 'btnSave':{
                     // Botão do formulário
-                    $this->setButton(50, 100, 'btnSave', 'btnSave', 'Salvar', 'btnSave');
+                    $this->setButton(50, 100, 'btnSave', 'btnSave', 'Salvar', 'btnSave btn btn-primary');
                     break;
                 }
                 case 'btnClean':{
                     // Botão do formulário
-                    $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar', 'btnClean');
+                    $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar', 'btnClean btn btn-warning');
                     break;
                 }
                 case 'contactForm':{ 
@@ -44,18 +46,40 @@ class FormContatoController extends Form
                     $this->setInput('text', 'name', 'name', 'Nome para cadastro', 50, 220, 'Nome', 'name');
                     break;
                 }
-                case 'telephoneForm':{ 
+                case 'telephoneForm':{
+                    $options = ['Selecione'];
+                    
+                    // Busca os tipos de telefones
+                    $tiposTelefoneAccess = new TiposTelefoneAccess();
+                    $result = $tiposTelefoneAccess->list();
+                    $rows = $result->fetchAll();
+                    
+                    foreach ($rows as $row) {
+                        $options[$row['id']] = $row['tipo_telefone'];
+                    }
+                    
                     // Campos do formulário
                     $this->setInput('text', 'telephoneNumber', 'telephoneNumber[]', 'Número de telefone', 50, 110, 'Telefone', 'telefone telephoneNumber');
-                    $this->setSelect(['Selecione'], 'telephoneType', 'telephoneType[]', 50, 109, 'Tipo de telefone');
+                    $this->setSelect($options, 'telephoneType', 'telephoneType[]', 50, 109, 'Tipo de telefone');
                     $this->setButton(50, 35, 'btnAddTelephone', 'btnAddTelephone', '+', 'btnAddTelephone btn btn-success');
                     $this->setButton(50, 35, 'btnDelTelephone', 'btnDelTelephone', '-', 'btnDelTelephone btn btn-danger');
                     break;
                 }
-                case 'emailForm':{ 
+                case 'emailForm':{
+                    $options = ['Selecione'];
+                    
+                    // Busca os tipos de e-mail
+                    $tiposEmailAccess = new TiposEmailAccess();
+                    $result = $tiposEmailAccess->list();
+                    $rows = $result->fetchAll();
+                    
+                    foreach ($rows as $row) {
+                        $options[$row['id']] = $row['tipo_email'];
+                    }
+                    
                     // Campos do formulário
                     $this->setInput('email', 'dscEmail', 'dscEmail[]', 'Email', 50, 180, 'Email');
-                    $this->setSelect(['Selecione'], 'emailType', 'emailType[]', 50, 109, 'Tipo de email');
+                    $this->setSelect($options, 'emailType', 'emailType[]', 50, 109, 'Tipo de email');
                     $this->setButton(50, 35, 'btnAddEmail', 'btnAddEmail', '+', 'btnAddEmail btn btn-success');
                     $this->setButton(50, 35, 'btnDelEmail', 'btnDelEmail', '-', 'btnDelEmail btn btn-danger');
                     break;
@@ -66,8 +90,8 @@ class FormContatoController extends Form
                     $this->setInput('text', 'name', 'name', 'Nome para cadastro', 50, 300, 'Nome');
                     $this->setInput('text', 'telephoneNumber', 'telephoneNumber', 'Número de telefone', 50, 300, 'Telefone', 'telefone');
                     $this->setInput('email', 'dscEmail', 'dscEmail', 'Email', 50, 300, 'Email');
-                    $this->setButton(50, 100, 'btnSearch', 'btnSearch', 'Pesquisar', 'btnSearch');
-                    $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar', 'btnClean');
+                    $this->setButton(50, 100, 'btnSearch', 'btnSearch', 'Pesquisar', 'btnSearch btn btn-primary');
+                    $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar', 'btnClean btn btn-warning');
                     break;
                 }
             }
