@@ -11,7 +11,7 @@ use PDO;
  * @package Application\Src
  *         
  */
-abstract class BaseDataAccess
+class BaseDataAccess
 {
 
     /**
@@ -169,14 +169,14 @@ abstract class BaseDataAccess
     public static function getLastInsertId()
     {
         if (self::$trans) {
-            $this->dbh = self::$dbTransaction;
+            self::$dbh = self::$dbTransaction;
         } else {
             $this->createConnection();
         }
         
-        $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        self::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $lastInsertId = $this->dbh->prepare('SELECT LAST_INSERT_ID()');
+        $lastInsertId = self::$dbh->prepare('SELECT LAST_INSERT_ID()');
         $lastInsertId->execute();
         
         self::$lastInsertId = $lastInsertId->fetchColumn();

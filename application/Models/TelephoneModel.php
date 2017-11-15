@@ -8,31 +8,31 @@ namespace Application\Models;
  * @since 10/11/2017
  *       
  */
-class TelefoneModel
+class TelephoneModel
 {
 
     private $id;
 
-    private $telefone;
+    private $telephone;
 
     private $contatoId;
 
-    private $tiposTelefoneId;
+    private $tiposTelephoneId;
 
     /**
      * Método construtor
      *
      * @param int $id            
-     * @param string $telefone            
+     * @param string $telephone            
      * @param int $contatoId            
-     * @param int $tiposTelefoneId            
+     * @param int $tiposTelephoneId            
      */
-    public function __construct(int $id = null, string $telefone = null, int $contatoId = null, int $tiposTelefoneId = null)
+    public function __construct(int $id = null, string $telephone = null, int $contatoId = null, int $tiposTelephoneId = null)
     {
         $this->id = $id;
-        $this->telefone = $telefone;
+        $this->telephone = $telephone;
         $this->contatoId = $contatoId;
-        $this->tiposTelefoneId = $tiposTelefoneId;
+        $this->tiposTelephoneId = $tiposTelephoneId;
     }
     
     //
@@ -54,9 +54,9 @@ class TelefoneModel
      *
      * @return \Application\Models\string
      */
-    public function getTelefone()
+    public function getTelephone()
     {
-        return $this->telefone;
+        return $this->telephone;
     }
 
     /**
@@ -74,9 +74,9 @@ class TelefoneModel
      *
      * @return \Application\Models\int
      */
-    public function getTipoTelefoneId()
+    public function getTipoTelephoneId()
     {
-        return $this->tiposTelefoneId;
+        return $this->tiposTelephoneId;
     }
     
     //
@@ -96,11 +96,11 @@ class TelefoneModel
     /**
      * Atribui o telefone
      *
-     * @param string $telefone            
+     * @param string $telephone            
      */
-    public function setTelefone(string $telefone)
+    public function setTelephone(string $telephone)
     {
-        $this->telefone = $telefone;
+        $this->telephone = $telephone;
     }
 
     /**
@@ -116,10 +116,10 @@ class TelefoneModel
     /**
      * Atribui o id do tipo de telefone
      *
-     * @param int $tipoTelefoneId            
+     * @param int $tipoTelephoneId            
      */
-    public function setTipoTelefoneId(int $tipoTelefoneId)
+    public function setTipoTelephoneId(int $tipoTelephoneId)
     {
-        $this->tiposTelefoneId = $tipoTelefoneId;
+        $this->tiposTelephoneId = $tipoTelephoneId;
     }
 }

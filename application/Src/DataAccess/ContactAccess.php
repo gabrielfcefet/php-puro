@@ -2,7 +2,7 @@
 namespace Application\Src\DataAccess;
 
 use Application\Src\Abstracts\BaseDataAccess;
-use Application\Models\ContatoModel;
+use Application\Models\ContactModel;
 
 /**
  * Classe de acesso ao banco de dados.
@@ -16,10 +16,10 @@ class ContactAccess extends BaseDataAccess
     /**
      * Insere o contato na base
      * 
-     * @param ContatoModel $contactModel            
+     * @param ContactModel $contactModel            
      * @return \Application\Src\Abstracts\statement
      */
-    public function insert(ContatoModel $contactModel)
+    public function insert(ContactModel $contactModel)
     {
         $params = [
             'nome' => $contactModel->getNome()

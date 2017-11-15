@@ -1,7 +1,7 @@
 <?php
 namespace Application\Src\BusinessRules;
 
-use Application\Models\ContatoModel;
+use Application\Models\ContactModel;
 
 /**
  * Classe das regras de negócio dos contatos.
@@ -15,13 +15,21 @@ class ContactRules
     /**
      * Aplica as regras de inserção de contatos na base
      *
-     * @param ContatoModel $contatoModel            
+     * @param ContactModel $contatoModel            
      * @throws \Exception
      */
-    public function insertContactRules(ContatoModel $contatoModel)
+    public function insertContactRules(ContactModel $contactModel)
     {
-        if (empty($contatoModel->getNome())) {
+        if (empty($contactModel->getNome())) {
             throw new \Exception('Informe o nome do contato!');
+        }
+        
+        if (strlen($contactModel->getNome()) < 2) {
+            throw new \Exception('O nome do contato ter no mínimo 2 caracteres!');
+        }
+        
+        if (!is_string($contactModel->getNome())) {
+            throw new \Exception('O nome do contato não pode ser numérico!');
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Application\Models;
  * @since 10/11/2017
  *       
  */
-class ContatoModel
+class ContactModel
 {
 
     private $id;
