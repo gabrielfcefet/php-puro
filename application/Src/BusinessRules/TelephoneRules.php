@@ -5,7 +5,7 @@ use Application\Models\TelephoneModel;
 use Application\Src\AppClass\Common;
 
 /**
- * Classe das regras de negócios para telefone
+ * Classe de regras de negócios para telefone
  *
  * @author Gabriel de Figueiredo Corrêa
  * @since 15/11/2017

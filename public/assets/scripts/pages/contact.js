@@ -8,6 +8,7 @@ var Contact = function () {
 				telephoneClone = $('#fdsTelefone .contentFormTelephone').first().clone(true);
 				telephoneClone.find('input[type=text]').val('');
 				telephoneClone.appendTo('#fdsTelefone').last();
+				telephoneClone.find('input[type=text]').focus();
 				MascaraTelefone();
 			}
 		});
@@ -32,6 +33,7 @@ var Contact = function () {
 				emailClone = $('#fdsEmail .contentFormEmail').first().clone(true);
 				emailClone.find('input[type=email]').val('');
 				emailClone.appendTo('#fdsEmail').last();
+				emailClone.find('input[type=email]').focus();
 			}
 		});
 	}
@@ -67,6 +69,13 @@ var Contact = function () {
 		$('#emailType').val(0);
 	}
 	
+	// Limpa todo o formulário
+	var cleanForm = function(){
+		cleanTelephones();
+		cleanEmails();
+		$('#name').val('').focus();
+	}
+	
 	// Valida os dados do formulário
 	var formValidate = function(){
 		
@@ -91,25 +100,6 @@ var Contact = function () {
 		return true;
 	}
 	
-	/* Envia as informações do contato 
-	   para salvar na base de dados*/
-	var saveContact = function(){
-		if(formValidate()){
-			
-			$.blockUI({ 
-				message: '<h1><img src='+ $('#imgAjaxLoader').val() +' /> Salvando...</h1>',
-				onBlock: function() {
-					// Requisita o botão de cadatro do contato
-					retorno = Ajax('/contact/insert', $('#formulario').serialize());
-					
-					if (retorno.SUCESSO) {
-						alert('Contato salvo com sucesso!');
-					}
-				}
-			});
-		}
-	}
-	
 	// Carrega as ações dos elementos
 	var loadActions = function(){
  		$('#btnSave, #btnClean, #btnAddTelephone, #btnDelTelephone, #btnAddEmail, #btnDelEmail').click(function(){
@@ -119,9 +109,7 @@ var Contact = function () {
 					break;
 				}
 				case 'btnClean':{
-					cleanTelephones();
-					cleanEmails();
-					$('#name').val('').focus();
+					cleanForm();
 					break;
 				}
 				case 'btnAddTelephone':{
@@ -176,8 +164,29 @@ var Contact = function () {
 				addTelephone();
 				addEmail();
 				loadActions();
+				$('#name').focus();
 			}
 		});
+	}
+	
+	/* Envia as informações do contato 
+	   para salvar na base de dados*/
+	var saveContact = function(){
+		if(formValidate()){
+			
+			$.blockUI({ 
+				message: '<h1><img src='+ $('#imgAjaxLoader').val() +' /> Salvando...</h1>',
+				onBlock: function() {
+					// Requisita o botão de cadatro do contato
+					retorno = Ajax('/contact/insert', $('#formulario').serialize());
+					
+					if (retorno.SUCESSO) {
+						alert('Contato salvo com sucesso!');
+						$('#btnClean').click();
+					}
+				}
+			});
+		}
 	}
 	
     return {

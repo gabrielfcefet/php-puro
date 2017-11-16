@@ -18,17 +18,4 @@ class IndexController extends Action
 	    
 		$this->render('index');
 	}
-	
-	/**
-	 * Action: home
-	 */
-	/*public function home()
-	{
-		$nomes = array();
-		$nomes[] = 'Gabriel';
-		$nomes[] = 'Luara';
-		
-		$this->view->nomes = $nomes;
-		$this->render('home');
-	}*/
 }

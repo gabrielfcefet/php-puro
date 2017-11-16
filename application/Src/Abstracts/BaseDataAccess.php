@@ -42,7 +42,7 @@ class BaseDataAccess
     private function createConnection()
     {
         try {
-            $this->dbh = new PDO(DATA_BASE['DSN'], DATA_BASE['USER'], DATA_BASE['PASSWORD']);
+            self::$dbh = new PDO(DATA_BASE['DSN'], DATA_BASE['USER'], DATA_BASE['PASSWORD']);
         } catch (PDOException $ex) {
             $this->raise_error('db_mysql::__construct() - Could not select and/or connect to database' . '-' . "Error!: " . $ex->getMessage());
         }
@@ -60,14 +60,14 @@ class BaseDataAccess
     public function executeQuery($query, $params = false)
     {
         if (self::$trans) {
-            $this->dbh = self::$dbTransaction;
+           self::$dbh = self::$dbTransaction;
         } else {
             $this->createConnection();
         }
         
-        $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        self::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $stmt = $this->dbh->prepare($query);
+        $stmt = self::$dbh->prepare($query);
         if ($params) {
             foreach ($params as $key => $value) {
                 if (empty($value)) {
@@ -124,11 +124,10 @@ class BaseDataAccess
      */
     public static function startTransaction()
     {
-        $base = new BaseDataAccess();
-        $base->createConnection();
-        $base->dbh->beginTransaction();
+        self::createConnection();
+        self::$dbh->beginTransaction();
         self::$trans = true;
-        self::$dbTransaction = $base->dbh;
+        self::$dbTransaction = self::$dbh;
     }
 
     /**

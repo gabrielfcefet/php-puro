@@ -98,7 +98,7 @@ class FormContatoController extends Form
             
             $baseViewAjax->setDataKey('form', $this->getContentForm());
             
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $baseViewAjax->setError($e->getMessage());
         }
         

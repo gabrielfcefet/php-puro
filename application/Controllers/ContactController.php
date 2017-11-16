@@ -10,6 +10,9 @@ use Application\Src\DataAccess\ContactAccess;
 use Application\Src\AppClass\Common;
 use Application\Src\BusinessRules\TelephoneRules;
 use Application\Src\DataAccess\TelephoneAccess;
+use Application\Models\EmailModel;
+use Application\Src\BusinessRules\EmailRules;
+use Application\Src\DataAccess\EmailAccess;
 
 /**
  * Classe controller de gerenciamento de contatos
@@ -47,6 +50,7 @@ class ContactController
             foreach ($_POST['telephoneNumber'] as $key => $value){
                 // Verifica se um telefone foi informado
                 if (!empty($value)) {
+                    
                     // Monta o objeto do telefone
                     $telephoneModel = new TelephoneModel(null, $value, $contactModel->getId(), $_POST['telephoneType'][$key]);
                     
@@ -64,13 +68,30 @@ class ContactController
             }
             
             /* Email do contato */
+            foreach ($_POST['dscEmail'] as $keyEmail => $valueEmail) {
+                
+                // Verifica se um email foi informado
+                if (!empty($valueEmail)) {
+                    
+                    // Monta o objeto do email
+                    $emailModel = new EmailModel(null, $valueEmail, $contactModel->getId(), $_POST['emailType'][$keyEmail]);
+                    
+                    // Valida o email informado
+                    $emailRules = new EmailRules();
+                    $emailRules->insertContactEmailRules($emailModel);
+                    
+                    // Insere o email do contato na base de dados
+                    $emailAccess = new EmailAccess();
+                    $emailAccess->insert($emailModel);
+                }
+            }
                 
             // Cria o retorno json
             $baseViewAjax->setDataKey('SUCESSO', true);
             
             BaseDataAccess::commitTransaction();
             
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $baseViewAjax->setError($e->getMessage());
             BaseDataAccess::rollbackTransaction();
         }

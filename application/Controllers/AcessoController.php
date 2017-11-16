@@ -54,7 +54,7 @@ class AcessoController
                 $baseViewAjax->setDataKey('SUCESSO', false);
                 $baseViewAjax->setError('Credenciais inválidas!');
             }
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             $baseViewAjax->setError($ex->getMessage());
         }
         
