@@ -136,7 +136,8 @@ class AppInit extends Bootstrap
 				'DESCRICAO' => $config['global.descricao'],
 				'AUTOR' => $config['global.autor'],
 			    'MASTER_PAGE' => $config['global.masterpage'],
-			    'MASTER_PAGE_POPUP' => $config['global.masterpage.popup']
+			    'MASTER_PAGE_POPUP' => $config['global.masterpage.popup'],
+			    'GRID_ITENS_PAGINA' => $config['global.grid.itens.pagina']
 			)
 		];
 		

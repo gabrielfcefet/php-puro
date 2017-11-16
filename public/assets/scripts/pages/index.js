@@ -36,6 +36,7 @@ var Index = function () {
 				
 				MascaraTelefone();
 				loadActions();
+				$('#contatoId').focus();
 			}
 		});
 	}

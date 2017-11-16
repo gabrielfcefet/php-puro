@@ -96,14 +96,14 @@ class BaseDataAccess
     public function getOne($query, $params = false)
     {
         if (self::$trans) {
-            $this->dbh = self::$dbTransaction;
+            self::$dbh = self::$dbTransaction;
         } else {
             $this->createConnection();
         }
         
-        $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        self::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $stmt = $this->dbh->prepare($query);
+        $stmt = self::$dbh->prepare($query);
         if ($params) {
             foreach ($params as $key => $value) {
                 $stmt->bindValue($key, $value);
