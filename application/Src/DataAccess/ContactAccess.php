@@ -15,7 +15,7 @@ class ContactAccess extends BaseDataAccess
 
     /**
      * Insere o contato na base
-     * 
+     *
      * @param ContactModel $contactModel            
      * @return \Application\Src\Abstracts\statement
      */
@@ -27,5 +27,18 @@ class ContactAccess extends BaseDataAccess
         
         return $this->executeQuery('insert into contato (nome)
                                                  values (:nome)', $params);
+    }
+
+    /**
+     * Retorna os contatos cadastrados
+     * 
+     * @return \Application\Src\Abstracts\statement
+     */
+    public function list()
+    {
+        return $this->executeQuery('select id,
+                                           nome
+                                      from contato
+                                  order by id');
     }
 }

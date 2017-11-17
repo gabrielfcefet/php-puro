@@ -84,6 +84,9 @@ class AppInit extends Bootstrap
 		// Rotas dos PopUps
 		$arrRoutes['popUpContact'] = array('route'=>'/popups/contact/register', 'controller'=>'contactPopUpController', 'action'=>'contactRegister');
 		
+		// Rotas das Grids
+		$arrRoutes['gridContact'] = array('route'=>'/grid/contact/contacts', 'controller'=>'contactGridController', 'action'=>'contacts');
+		
 		$this->setRoutes($arrRoutes);
 	}
 	
@@ -137,7 +140,7 @@ class AppInit extends Bootstrap
 				'AUTOR' => $config['global.autor'],
 			    'MASTER_PAGE' => $config['global.masterpage'],
 			    'MASTER_PAGE_POPUP' => $config['global.masterpage.popup'],
-			    'GRID_ITENS_PAGINA' => $config['global.grid.itens.pagina']
+			    'TEMPLATE_GRID' => $config['global.template.grid']
 			)
 		];
 		

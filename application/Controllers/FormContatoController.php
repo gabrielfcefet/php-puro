@@ -94,6 +94,9 @@ class FormContatoController extends Form
                     $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar', 'btnClean btn btn-warning');
                     break;
                 }
+                case 'fieldRowsPage':{
+                    $this->setInput('text', 'maxRowsPage', 'maxRowsPage', 'Número de linhas por página do grid', 50, 120, 'Linhas por página');
+                }
             }
             
             $baseViewAjax->setDataKey('form', $this->getContentForm());

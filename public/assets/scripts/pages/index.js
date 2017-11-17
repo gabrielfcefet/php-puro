@@ -34,6 +34,14 @@ var Index = function () {
 				retornoPesquisa = Ajax('/forms/contact', 'option=searchForm');
 				$('#contentFormPesquisa').html(retornoPesquisa.form);
 				
+				// Requisita o campo para configurar o número de linhas por página
+				retornoMaxRowsPage = Ajax('/forms/contact', 'option=fieldRowsPage');
+				$('#contentFormMaxRowsPage').html(retornoMaxRowsPage.form);
+				
+				// Requisita o campo para configurar o número de linhas por página
+				retornoGridContato = Ajax('/grid/contact/contacts', '');
+				$('#contentGridContato').html(retornoGridContato.grid);
+				
 				MascaraTelefone();
 				loadActions();
 				$('#contatoId').focus();
