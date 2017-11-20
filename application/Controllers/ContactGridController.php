@@ -19,7 +19,7 @@ class ContactGridController extends Grid
             $baseViewAjax = new BaseViewAjax();
             
             // Define o título da grid
-            $this->setTitle('Contatos');
+            $this->setTitle('');
             
             // Define o cabeçalho da grid
             $this->setHeader(['#', 'Nome']);
