@@ -14,34 +14,6 @@
 	/*background-color: yellow;*/
 }
 
-thead, tbody{
-  display: block;
-}
-
-tbody{
-  overflow-y: scroll;
-  height: 200px;
-}
-
-.table th{
-  padding: 5px;
-  width:4%;
-}
-
-.table td {
-  padding: 5px;
-  width:21%;
-}
-
-/*thead, tbody{
-  display: block;
-}
-
-tbody{
-  overflow-y: scroll;
-  height: 200px;
-}*/
-
 #fdsBtnRegister, #fdsFormPesquisa, #fdsGridContato{
 	margin-top: 10px;
 	width:31.33%;

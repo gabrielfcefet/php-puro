@@ -18,11 +18,19 @@ class ContactGridController extends Grid
         try {
             $baseViewAjax = new BaseViewAjax();
             
+            // Define as configurações do grid
+            $this->setConfig(['width'=> '100%', 'height' => '135px']);
+            
             // Define o título da grid
             $this->setTitle('');
             
             // Define o cabeçalho da grid
-            $this->setHeader(['#', 'Nome']);
+            $this->setHeader([
+                '#'       => ['width' => '50px'], 
+                'Nome'    => ['width' => '200px'],
+                'Editar'  => ['width' => '50px'],
+                'Excluir' => ['width' => '50px']
+            ]);
             
             // Busca os contatos
             $contactAccess = new ContactAccess();
@@ -31,7 +39,12 @@ class ContactGridController extends Grid
             
             if (count($rows) > 0) {
                 foreach ($rows as $row) {
-                    $this->setRow([$row['id'], $row['nome']]);
+                    $this->setRow([
+                        $row['id'], 
+                        $row['nome'],
+                        'Editar',
+                        'Excluir'
+                    ]);
                 }
             }
             

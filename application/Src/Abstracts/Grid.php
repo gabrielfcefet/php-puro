@@ -9,6 +9,8 @@ abstract class Grid extends TemplateParser
     private $templateGrid;
 
     private $htmlRowsGrid;
+    
+    private $arrConfigColumn;
 
     /**
      * Método construtor
@@ -16,6 +18,19 @@ abstract class Grid extends TemplateParser
     public function __construct()
     {
         $this->templateGrid = GLOBAL_VARS['TEMPLATE_GRID'];
+    }
+
+    /**
+     * Define a configuração inicial do grid
+     * 
+     * Example: ['width' => 'value', 'height' => 'value']
+     * 
+     * @param array $arrConfig            
+     */
+    protected function setConfig(array $arrConfig)
+    {
+        $this->parser('WIDTH', isset($arrConfig['width']) ? $arrConfig['width'] : '');
+        $this->parser('HEIGHT', isset($arrConfig['height']) ? $arrConfig['height'] : '');
     }
 
     /**
@@ -31,14 +46,20 @@ abstract class Grid extends TemplateParser
     /**
      * Monta o cabeçalho do grid
      *
+     *Example: ['titleColumn' => ['width' => 'value', 'height' => 'value']]
+     *
      * @param array $arrHeader            
      */
     protected function setHeader(array $arrHeader)
     {
         $headerHtml = "<tr>";
         
-        foreach ($arrHeader as $titleColumn) {
-            $headerHtml .= "<th>{$titleColumn}</th>";
+        foreach ($arrHeader as $titleColumn => $configColumn) {
+            
+            $arrConfigColumn['width'] = isset($configColumn['width'])?$configColumn['width']:'';
+            $arrConfigColumn['height'] = isset($configColumn['height'])?$configColumn['height']:'';
+            $this->arrConfigColumn[] = $arrConfigColumn;
+            $headerHtml .= "<th width={$arrConfigColumn['width']} height={$arrConfigColumn['height']}>{$titleColumn}</th>";
         }
         
         $headerHtml .= "</tr>";
@@ -55,8 +76,8 @@ abstract class Grid extends TemplateParser
     {
         $this->htmlRowsGrid .= '<tr>';
         
-        foreach ($arrRow as $rowColumn) {
-            $this->htmlRowsGrid .= "<td>{$rowColumn}</td>";
+        foreach ($arrRow as $key => $rowColumn) {
+            $this->htmlRowsGrid .= "<td width={$this->arrConfigColumn[$key]['width']} height={$this->arrConfigColumn[$key]['height']}>{$rowColumn}</td>";
         }
         
         $this->htmlRowsGrid .= '</tr>';
@@ -64,7 +85,7 @@ abstract class Grid extends TemplateParser
 
     protected function setPagination()
     {
-        //CONTINUAR
+        // CONTINUAR
     }
 
     /**
@@ -79,7 +100,7 @@ abstract class Grid extends TemplateParser
 
     /**
      * Retorna o conteúdo do grid
-     * 
+     *
      * @return string
      */
     protected function renderGrid()
