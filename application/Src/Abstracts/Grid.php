@@ -10,6 +10,8 @@ abstract class Grid extends TemplateParser
 
     private $htmlRowsGrid;
     
+    private $arrConfigGrid;
+    
     private $arrConfigColumn;
 
     /**
@@ -23,7 +25,7 @@ abstract class Grid extends TemplateParser
     /**
      * Define a configuração inicial do grid
      * 
-     * Example: ['width' => 'value', 'height' => 'value']
+     * Example: ['width' => 'value', 'height' => 'value', 'pagination' => 'boolean']
      * 
      * @param array $arrConfig            
      */
@@ -31,6 +33,8 @@ abstract class Grid extends TemplateParser
     {
         $this->parser('WIDTH', isset($arrConfig['width']) ? $arrConfig['width'] : '');
         $this->parser('HEIGHT', isset($arrConfig['height']) ? $arrConfig['height'] : '');
+        $this->parser('PAGINATION', (isset($arrConfig['pagination']) && $arrConfig['pagination'] == true) ? 'inline' : 'none');
+        $this->arrConfigGrid = $arrConfig;
     }
 
     /**
@@ -82,10 +86,25 @@ abstract class Grid extends TemplateParser
         
         $this->htmlRowsGrid .= '</tr>';
     }
-
-    protected function setPagination()
+    
+    /**
+     * Monta os botões de paginação
+     * 
+     * Example: ['url' => 'route','numberPages' => 'number','pageSelected' => 'number']
+     * 
+     * @param array $configPagination
+     */
+    protected function setPagination(array $configPagination)
     {
-        // CONTINUAR
+        // Verifica se a paginação está ativada
+        if (isset($this->arrConfigGrid['pagination']) && $this->arrConfigGrid['pagination'] == true) {
+            for ($i=0; $i<$configPagination['numberPages']; $i++){
+                $htmlPagination .= "<li class='page-item'><a class='page-link' href='{$configPagination['url']}?page={$i}'>" . $i + 1 . '</a></li>';
+            }
+            
+        }
+        
+        $this->parser('PAGES', $htmlPagination);
     }
 
     /**

@@ -31,7 +31,7 @@ class ContactAccess extends BaseDataAccess
 
     /**
      * Retorna os contatos cadastrados
-     * 
+     *
      * @return \Application\Src\Abstracts\statement
      */
     public function list()
@@ -40,5 +40,27 @@ class ContactAccess extends BaseDataAccess
                                            nome
                                       from contato
                                   order by id');
+    }
+
+    /**
+     * Retorna os contaros paginados
+     * 
+     * @param int $maxRowsPage            
+     * @param int $page
+     * 
+     * @return \Application\Src\Abstracts\statement            
+     */
+    public function findPaginationGrid(int $maxRowsPage, int $page)
+    {
+        $params = [
+            'maxRowsPage' => $maxRowsPage,
+            'page' => $page
+        ];
+        
+        return $this->executeQuery('select id,
+                                           nome
+                                      from contato
+                                     LIMIT :page, :maxRowsPage
+                                     order by id', $params);
     }
 }

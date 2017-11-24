@@ -20,6 +20,15 @@ var Index = function () {
 		});
 	}
 	
+	var formValidate = function(){
+		if($('#maxRowsPage').val() == ''){
+			alert('Informe a quantidade de linhas por página do grid!');
+			return false;
+		}
+		
+		return true;
+	}
+	
 	// Inicia a carga dos formulários
 	var loadForm = function(){
 		$.blockUI({ 

@@ -278,12 +278,13 @@ abstract class Form
      * @param string $name            
      * @param string $alt            
      * @param float $height            
-     * @param float $width            
+     * @param float $width
      * @param string $label
+     * * @param string $value
      * @param string $class            
      *
      */
-    protected function setInput(string $type, string $id, string $name, string $alt, float $height, float $width, string $label = '', string $class = '')
+    protected function setInput(string $type, string $id, string $name, string $alt, float $height, float $width, string $label = '', string $value = '', string $class = '')
     {
         // Validação dos itens obrigatórios
         if (empty($type)) {
@@ -319,7 +320,7 @@ abstract class Form
         }
         
         // Define o campo input do formulário
-        $this->htmlForm .= "<input type={$type} id={$id} name={$name} class='{$class}' alt={$alt} style='width:{$width}px;'/>";
+        $this->htmlForm .= "<input type={$type} id={$id} name={$name} class='{$class}' alt={$alt} style='width:{$width}px;' value='{$value}' />";
         
         // Fecha a div que armazenará o campo input
         $this->closeDiv();

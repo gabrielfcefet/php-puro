@@ -88,14 +88,14 @@ class FormContatoController extends Form
                     // Campos do formulário
                     $this->setInput('text', 'contatoId', 'contatoId', 'Id do contato', 50, 50, 'ID');
                     $this->setInput('text', 'name', 'name', 'Nome para cadastro', 50, 300, 'Nome');
-                    $this->setInput('text', 'telephoneNumber', 'telephoneNumber', 'Número de telefone', 50, 300, 'Telefone', 'telefone');
+                    $this->setInput('text', 'telephoneNumber', 'telephoneNumber', 'Número de telefone', 50, 300, 'Telefone', '', 'telefone');
                     $this->setInput('email', 'dscEmail', 'dscEmail', 'Email', 50, 300, 'Email');
                     $this->setButton(50, 100, 'btnSearch', 'btnSearch', 'Pesquisar', 'btnSearch btn btn-primary');
                     $this->setButton(50, 100, 'btnClean', 'btnClean', 'Limpar', 'btnClean btn btn-warning');
                     break;
                 }
                 case 'fieldRowsPage':{
-                    $this->setInput('text', 'maxRowsPage', 'maxRowsPage', 'Número de linhas por página do grid', 50, 120, 'Linhas por página');
+                    $this->setInput('text', 'maxRowsPage', 'maxRowsPage', 'Número de linhas por página do grid', 50, 120, 'Linhas por página', '5');
                 }
             }
             
